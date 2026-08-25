@@ -2,8 +2,7 @@ import { Navigate } from 'react-router-dom';
 
 const ProtectedRoute = ({ children, requiredRole }) => {
  
-  const userRole = localStorage.getItem('batman_user_role') || 'customer'; 
-
+const userRole = localStorage.getItem('userRole') || 'customer';
   
   if (requiredRole === 'admin' && userRole !== 'admin') {
     return (
