@@ -28,12 +28,23 @@ const Login = () => {
 
     setTimeout(() => {
       setLoading(false);
+      
       if (formData.email.includes('admin')) {
+        
+        localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('userRole', 'admin');
+        
         alert('تم تسجيل الدخول بنجاح كأدمن!');
-        navigate('/admin');
+        navigate('/admin'); 
+        
       } else {
+        
+        localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('userRole', 'customer');
+        
         alert('تم تسجيل الدخول بنجاح كعميل!');
-        navigate('/profile');
+        navigate('/profile'); 
+        
       }
     }, 1000);
   };
@@ -52,11 +63,11 @@ const Login = () => {
         <div>
           <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>البريد الإلكتروني:</label>
           <input 
-            type="email5" 
+            type="email" 
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="example@battech.com"
+            placeholder="admin@battechno.com"
             style={{ width: '100%', padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
           />
         </div>
